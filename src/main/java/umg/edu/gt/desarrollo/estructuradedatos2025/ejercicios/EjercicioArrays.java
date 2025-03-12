@@ -38,22 +38,25 @@ public class EjercicioArrays {
 	1 <= cuentas[i][j] <= 100	
 	*/
         
-        public int encontrarRiquezaMaxima(int[][] cuentas) {
+        public static int encontrarRiquezaMaxima(int[][] cuentas) {
             int maxRiqueza = 0;
             
             if (cuentas == null || cuentas.length < 1) {
                 System.out.println("El número de clientes debe de ser mayor a 1");
+                return -1;
             }
 
             for (int[] cliente : cuentas) {
                 if (cliente == null || cliente.length > 50) {
                     System.out.println("El número de bancos debe de ser menor a 50");
+                    return -2;
                 }
 
                 int riquezaActual = 0;
                 for (int dinero : cliente) {
                     if (dinero < 1 || dinero > 100) {
                         System.out.println("La cantidad de dinero debe estar entre 1 y 100");
+                        return -3;
                     }
                     riquezaActual += dinero;
                 }
@@ -109,6 +112,7 @@ public class EjercicioArrays {
 
             if (m < 1 || m > 100) {
                 System.out.println("Las dimensiones de la matriz deben estar entre 1 y 100");
+                return -1;
             }                       
 
             for (int i = 0; i < m; i++) {    
@@ -116,11 +120,13 @@ public class EjercicioArrays {
                 
                 if (n < 1 || n > 100) {
                     System.out.println("Las dimensiones de la matriz deben estar entre 1 y 100");
+                    return -2;
                 }                    
                 
                 for (int j = 0; j < n; j++) {
                     if (mat[i][j] < 1 || mat[i][j] > 1000) {
                         System.out.println("Los valores deben estar entre 1 y 1000");
+                        return -3;
                     }
                     suma += mat[i][j];
                 }
@@ -128,5 +134,7 @@ public class EjercicioArrays {
 
             return suma;
         }
-
+        
+                           
+                         
 }
