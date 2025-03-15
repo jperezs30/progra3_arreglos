@@ -1,7 +1,9 @@
 package umg.edu.gt.desarrollo.estructuradedatos2025.ejercicios;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EjercicioArrays {
-	
+	private static final Logger logger = LogManager.getLogger(EjercicioArrays.class);
 	/* INSTRUCCIONES
 	 	Escriba el algoritmo que resuelve el problema en esta clase.Debe crear un package llamado umg.edu.gt.test.ClaseArrays que corresponda al Test de esta clase.
 		Genere un Test por cada ejemplo y fuerce que uno de esos Test falle, puede implementar retornar un resultado
@@ -39,23 +41,24 @@ public class EjercicioArrays {
 	*/
         
         public static int encontrarRiquezaMaxima(int[][] cuentas) {
+            logger.info("Inicio de encontrarRiquezaMaxima");
             int maxRiqueza = 0;
             
             if (cuentas == null || cuentas.length < 1) {
-                System.out.println("El número de clientes debe de ser mayor a 1");
+                logger.error("El número de clientes debe de ser mayor a 1");
                 return -1;
             }
 
             for (int[] cliente : cuentas) {
                 if (cliente == null || cliente.length > 50) {
-                    System.out.println("El número de bancos debe de ser menor a 50");
+                    logger.error("El número de bancos debe de ser menor a 50");
                     return -2;
                 }
 
                 int riquezaActual = 0;
                 for (int dinero : cliente) {
                     if (dinero < 1 || dinero > 100) {
-                        System.out.println("La cantidad de dinero debe estar entre 1 y 100");
+                        logger.error("La cantidad de dinero debe estar entre 1 y 100");
                         return -3;
                     }
                     riquezaActual += dinero;
@@ -107,11 +110,12 @@ public class EjercicioArrays {
 	1 <= mat[i][j] <= 1000
 	 */
         public static int sumarElementos(int[][] mat) {
+            logger.info("Inicio de sumarElementos");
             int suma = 0;
             int m = mat.length;            
 
             if (m < 1 || m > 100) {
-                System.out.println("Las dimensiones de la matriz deben estar entre 1 y 100");
+                logger.error("Las dimensiones de la matriz deben estar entre 1 y 100");
                 return -1;
             }                       
 
@@ -119,13 +123,13 @@ public class EjercicioArrays {
                 int n = mat[i].length;
                 
                 if (n < 1 || n > 100) {
-                    System.out.println("Las dimensiones de la matriz deben estar entre 1 y 100");
+                    logger.error("Las dimensiones de la matriz deben estar entre 1 y 100");
                     return -2;
                 }                    
                 
                 for (int j = 0; j < n; j++) {
                     if (mat[i][j] < 1 || mat[i][j] > 1000) {
-                        System.out.println("Los valores deben estar entre 1 y 1000");
+                        logger.error("Los valores deben estar entre 1 y 1000");
                         return -3;
                     }
                     suma += mat[i][j];
